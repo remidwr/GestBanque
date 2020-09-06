@@ -40,5 +40,18 @@ namespace Models
         {
             Comptes.Remove(numero);
         }
+
+        public double AvoirDesComptes(Personne personne)
+        {
+            double Avoir = 0.0;
+
+            foreach (Courant courant in _Comptes.Values)
+            {
+                if (courant.Titulaire == personne)
+                    Avoir += courant;
+            }
+
+            return Avoir;
+        }
     }
 }

@@ -6,6 +6,13 @@ namespace Models
 {
     public class Courant
     {
+        #region Surcharge
+        public static double operator +(double Solde, Courant courant)
+        {
+            return Solde + ((courant.Solde < 0.0) ? 0.0 : courant.Solde);
+        }
+        #endregion
+
         public string Numero { get; set; }
         public double Solde { get; private set; }
 
