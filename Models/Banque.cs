@@ -8,25 +8,25 @@ namespace Models
     {
         public string Nom { get; set; }
 
-        private Dictionary<string, Courant> _Comptes;
-        public Dictionary<string, Courant> Comptes
+        private Dictionary<string, Compte> _Comptes;
+        public Dictionary<string, Compte> Comptes
         {
             get
             {
-                return _Comptes = _Comptes ?? new Dictionary<string, Courant>();
+                return _Comptes = _Comptes ?? new Dictionary<string, Compte>();
             }
         }
 
-        public Courant this[string numero]
+        public Compte this[string numero]
         {
             get
             {
-                Comptes.TryGetValue(numero, out Courant compte);
+                Comptes.TryGetValue(numero, out Compte compte);
                 return compte;
             }
         }
 
-        public void Ajouter(Courant compte)
+        public void Ajouter(Compte compte)
         {
             if(compte is null || Comptes.ContainsKey(compte.Numero))
             {
@@ -45,7 +45,7 @@ namespace Models
         {
             double Avoir = 0.0;
 
-            foreach (Courant courant in _Comptes.Values)
+            foreach (Compte courant in _Comptes.Values)
             {
                 if (courant.Titulaire == personne)
                     Avoir += courant;
