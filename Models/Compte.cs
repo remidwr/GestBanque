@@ -4,15 +4,8 @@ using System.Text;
 
 namespace Models
 {
-    public class Compte
+    public abstract class Compte
     {
-        #region Surcharge
-        public static double operator +(double Solde, Compte compte)
-        {
-            return Solde + ((compte.Solde < 0.0) ? 0.0 : compte.Solde);
-        }
-        #endregion
-
         public string Numero { get; set; }
         public double Solde { get; private set; }
         public Personne Titulaire { get; set; }
@@ -39,5 +32,19 @@ namespace Models
 
             Solde += montant;
         }
+
+        protected abstract double CalculInteret();
+
+        public void AppliquerInteret()
+        {
+            Solde += CalculInteret();
+        }
+
+        #region Surcharge
+        public static double operator +(double Solde, Compte compte)
+        {
+            return Solde + ((compte.Solde < 0.0) ? 0.0 : compte.Solde);
+        }
+        #endregion
     }
 }
