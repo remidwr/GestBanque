@@ -25,7 +25,7 @@ namespace GestBanque
             courant1.Retrait(1000);
             Afficher(courant1);
 
-            courant1.Retrait(2000);
+            //courant1.Retrait(2000);
             Afficher(courant1);
 
             Epargne epargne1 = new Epargne();

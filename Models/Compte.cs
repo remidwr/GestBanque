@@ -1,14 +1,16 @@
-﻿using System;
+﻿using Models.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace Models
 {
-    public abstract class Compte
+    public abstract class Compte : IBanker, ICustomer
     {
         public string Numero { get; set; }
         public double Solde { get; private set; }
         public Personne Titulaire { get; set; }
+        public int LigneDeCredit { get; set; }
 
         public void Retrait(double montant, double LigneDeCredit)
         {
